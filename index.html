@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caprice - магазин женской одежды в Воронеже</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Глобальные стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Стили хедера */
+        header {
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 20px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-image {
+            width: 70px;
+            height: 70px;
+            margin-right: 15px;
+            border-radius: 50%;
+            object-fit: contain;
+            filter: grayscale(100%);
+        }
+        
+        .logo-text {
+            font-size: 38px;
+            font-weight: 300;
+            color: #333333;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        /* Герой-секция */
+        .hero {
+            background: linear-gradient(to right, #f8f8f8 0%, #ffffff 100%);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #e0e0e0, transparent);
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            color: #444444;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #666666;
+            line-height: 1.8;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, #888888, #aaaaaa);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(to right, #777777, #999999);
+        }
+        
+        /* Секция "О нас" */
+        .about {
+            padding: 100px 0;
+            background-color: #fafafa;
+            position: relative;
+        }
+        
+        .about::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #e0e0e0, transparent);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h2 {
+            font-size: 36px;
+            color: #444444;
+            margin-bottom: 25px;
+            font-weight: 300;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .about-text h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background-color: #aaaaaa;
+        }
+        
+        .about-text p {
+            font-size: 17px;
+            color: #666666;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .about-image {
+            flex: 1;
+            height: 400px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            object-fit: cover;
+            width: 100%;
+            filter: grayscale(20%);
+            transition: all 0.4s ease;
+        }
+        
+        .about-image:hover {
+            filter: grayscale(0%);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+        
+        /* Секция контактов */
+        .contact {
+            padding: 100px 0;
+            background-color: #ffffff;
+            position: relative;
+        }
+        
+        .contact::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #e0e0e0, transparent);
+        }
+        
+        .contact h2 {
+            text-align: center;
+            font-size: 36px;
+            color: #444444;
+            margin-bottom: 60px;
+            font-weight: 300;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .contact h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background-color: #aaaaaa;
+        }
+        
+        .contact-content {
+            display: flex;
+            gap: 60px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            font-size: 24px;
+            color: #555555;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            background-color: #f8f8f8;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #e0e0e0 0%, #c0c0c0 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            color: #ffffff;
+            font-size: 20px;
+        }
+        
+        .contact-details {
+            flex: 1;
+        }
+        
+        .contact-details h4 {
+            font-size: 18px;
+            color: #444444;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .contact-details p {
+            color: #666666;
+            font-size: 16px;
+        }
+        
+        .map {
+            flex: 1;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            height: 400px;
+            transition: all 0.3s ease;
+        }
+        
+        .map:hover {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+        
+        .map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(30%);
+        }
+        
+        /* Футер */
+        footer {
+            background: linear-gradient(135deg, #444444 0%, #222222 100%);
+            color: #ffffff;
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-logo-image {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+            border-radius: 50%;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+        
+        .footer-logo-text {
+            font-size: 28px;
+            font-weight: 300;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .social-icons a {
+            color: #ffffff;
+            font-size: 30px;
+            margin: 0 12px;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+        
+        .social-icons a:hover {
+            opacity: 1;
+            transform: translateY(-3px);
+            color: #e0e0e0;
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            font-size: 14px;
+            opacity: 0.7;
+            color: #cccccc;
+        }
+        
+        /* Адаптивные стили */
+        @media (max-width: 992px) {
+            .about-content, .contact-content {
+                flex-direction: column;
+            }
+            
+            .about-image, .map {
+                width: 100%;
+                margin-top: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .social-icons {
+                margin-top: 25px;
+            }
+            
+            .logo-text {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Хедер с логотипом -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="foto/logo.png" alt="Логотип Caprice" class="logo-image">
+                    <div class="logo-text">CAPRICE</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Главная секция -->
+    <section class="hero">
+        <div class="container">
+            <h1><b>ВАШ СТИЛЬ-ВАША УНИКАЛЬНОСТЬ</b></h1>
+            <a href="#contact" class="btn">Посетить нас</a>
+        </div>
+    </section>
+
+    <!-- Секция "О нас" -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>О нашем магазине</h2>
+                    <p>Caprice — это ваш персональный стилист, где рождаются идеальные образы для любого повода. У нас вы легко соберете комплект как для важной деловой встречи, так и для повседневной городской прогулки  или динамичного стиля в духе спортивного шика. Мы предлагаем вам разнообразный ассортимент, чтобы вы могли выразить свою оригинальность в любой одежде. Завершите свой образ подходящей бижутерией, которая подчеркнет важные детали. Доверьтесь Caprice, чтобы всегда выглядеть уверенно и привлекательно в любой ситуации.</p>
+                    
+                </div>
+                <img src="foto/interior.jpg" alt="Интерьер магазина Caprice" class="about-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция контактов -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Контакты</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Добро пожаловать в наш магазин</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Адрес</h4>
+                            <p>г. Воронеж, ул. Генерала Лизюкова, д. 46</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Часы работы</h4>
+                            <p>Пн-Сб: 10:00 - 19:00</p>
+                            <p>Вс: 10:00 - 18:00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Телефон</h4>
+                            <p>+7 (951) 866-31-16</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-telegram"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Telegram</h4>
+                            <p>https://t.me/caprice_women</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="map">
+                    <iframe src="https://yandex.ru/map-widget/v1/?from=mapframe&ll=39.156787%2C51.706064&mode=search&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D158055576039&sctx=ZAAAAAgBEAAaKAoSCXWr56T3k0NAEQpLPKBs2klAEhIJSigfJRyOsj8RIq629DL%2Fpj8iBgABAgMEBSgKOABAr80GSAFqAnJ1nQHNzMw9oAEAqAEAvQH4C4R5wgEG5%2BPi5swEggIM0JrQsNC%2F0YDQuNC3igIAkgIAmgIMZGVza3RvcC1tYXBz&sll=39.156787%2C51.706064&source=mapframe&sspn=0.003130%2C0.001284&text=%D0%9A%D0%B0%D0%BF%D1%80%D0%B8%D0%B7&utm_source=mapframe&z=18.8" width="100%" height="100%" frameborder="1" allowfullscreen="true" ></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="foto/logo.png" alt="Логотип Caprice" class="logo-image">
+                    <div class="footer-logo-text">Caprice</div>
+                </div>
+                
+                <div class="social-icons">
+                    <a href="https://t.me/caprice_women"><i class="fab fa-telegram"></i></a>
+                    <a href="https://wa.me/79518663116" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 Магазин женской одежды "Caprice"
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
